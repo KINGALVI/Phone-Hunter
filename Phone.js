@@ -1,14 +1,24 @@
-const phoneAPI = () => {
+const phoneAPI = (Phone, DataLimit) => {
 
-    fetch(`https://openapi.programming-hero.com/api/phones?search=iphone`)
+    fetch(`https://openapi.programming-hero.com/api/phones?search=${Phone}`)
         .then(res => res.json())
-        .then(Data => phoneContainer(Data.data));
+        .then(Data => phoneContainer(Data.data, DataLimit));
 
 }
+
+document.getElementById('phone-search-button').addEventListener('click', function () {
+    const phoneInputField = document.getElementById('phone-input-field');
+    const phoenInputText = phoneInputField.value;
+    phoneInputField.value = '';
+    phoneAPI(phoenInputText);
+
+})
 
 const phoneContainer = (Data) => {
 
     const phoneContainer = document.getElementById('Phone-Container');
+    phoneContainer.innerHTML = '';
+    phoneContainer.textContent
 
     Data.forEach(Data => {
         const phoneSection = document.createElement('div');
@@ -18,7 +28,7 @@ const phoneContainer = (Data) => {
         <div class="card" style="width: 18rem;">
 
             <img src=${Data.image} class="card-img-top" alt="...">
-            
+
             <div class="card-body">
 
                 <h3 class="card-title">Brand : ${Data.brand}</h3>
@@ -38,11 +48,10 @@ const phoneContainer = (Data) => {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                               <b> Are You Sure You Want To Purchase ${Data.phone_name} ? </b>
+                               <b> You Are Successfuly Purchase ${Data.phone_name} !! ? </b>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> No </button>
-                                <button type="button" class="btn btn-primary" id="yes-btn" data-bs-dismiss="modal"> Yes </button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal"> OK </button>
                             </div>
                         </div>
                     </div>
@@ -55,10 +64,6 @@ const phoneContainer = (Data) => {
     </div>
         `
         phoneContainer.appendChild(phoneSection)
-    })
-
-    document.getElementById('yes-btn').addEventListener('click', function () {
-        alert(`You Successfuly Purchase Thish Phone`)
     })
 
 }
