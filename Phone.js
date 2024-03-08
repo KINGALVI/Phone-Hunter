@@ -66,7 +66,7 @@ const phoneContainer = (Data) => {
         phoneContainer.appendChild(phoneSection)
     })
 
-}
+} 
 
 
 phoneAPI()
