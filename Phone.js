@@ -11,7 +11,7 @@ document.getElementById('phone-search-button').addEventListener('click', functio
     const phoenInputText = phoneInputField.value;
     phoneInputField.value = '';
     phoneAPI(phoenInputText);
-
+    toggleSpinner(true);
 })
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,11 +24,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.key === "Enter") {
             searchButton.click()
             event.preventDefault()
+            toggleSpinner(true);
         }
 
     })
 
 })
+
+const toggleSpinner = spinner => {
+
+    const spinnerDiv = document.getElementById('spinner');
+    if (spinner === true) {
+        spinnerDiv.classList.remove('d-none');
+    }
+    else {
+        spinnerDiv.classList.add('d-none');
+    }
+
+}
 
 const showNoPhoneText = (Data) => {
 
@@ -96,6 +109,8 @@ const phoneContainer = (Data) => {
         `
         phoneContainer.appendChild(phoneSection)
     })
+
+    toggleSpinner(false);
 
 }
 
