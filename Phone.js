@@ -14,6 +14,22 @@ document.getElementById('phone-search-button').addEventListener('click', functio
 
 })
 
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    document.getElementById('phone-input-field').addEventListener('keyup', function () {
+
+        const searchButton = document.getElementById('phone-search-button');
+
+        if (event.key === "Enter") {
+            searchButton.click()
+            event.preventDefault()
+        }
+
+    })
+
+})
+
 const showNoPhoneText = (Data) => {
 
     const getNoPhoneText = document.getElementById('no-phone-found');
