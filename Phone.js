@@ -14,11 +14,26 @@ document.getElementById('phone-search-button').addEventListener('click', functio
 
 })
 
+const showNoPhoneText = (Data) => {
+
+    const getNoPhoneText = document.getElementById('no-phone-found');
+
+    if (Data.length === 0) {
+        getNoPhoneText.classList.remove('d-none')
+    }
+    else {
+        getNoPhoneText.classList.add('d-none')
+    }
+
+}
+
 const phoneContainer = (Data) => {
 
     const phoneContainer = document.getElementById('Phone-Container');
     phoneContainer.innerHTML = '';
     phoneContainer.textContent
+
+    showNoPhoneText(Data);
 
     Data.forEach(Data => {
         const phoneSection = document.createElement('div');
@@ -66,7 +81,7 @@ const phoneContainer = (Data) => {
         phoneContainer.appendChild(phoneSection)
     })
 
-} 
+}
 
 
-phoneAPI()
+// phoneAPI()
