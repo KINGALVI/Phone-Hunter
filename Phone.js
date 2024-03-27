@@ -11,7 +11,7 @@ document.getElementById('phone-search-button').addEventListener('click', functio
     const phoneInputField = document.getElementById('phone-input-field');
     const phoenInputText = phoneInputField.value;
     phoneInputField.value = '';
-    phoneAPI(phoenInputText, DataLimit);
+    phoneAPI(phoenInputText);
     toggleSpinner(true);
 })
 
