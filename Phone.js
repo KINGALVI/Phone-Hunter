@@ -1,18 +1,20 @@
-const phoneAPI = (Phone, DataLimit) => {
+const phoneAPI = (Phone) => {
 
     fetch(`https://openapi.programming-hero.com/api/phones?search=${Phone}`)
         .then(res => res.json())
-        .then(Data => phoneContainer(Data.data, DataLimit));
+        .then(Data => phoneContainer(Data.data));
 
 }
+
 
 document.getElementById('phone-search-button').addEventListener('click', function () {
     const phoneInputField = document.getElementById('phone-input-field');
     const phoenInputText = phoneInputField.value;
     phoneInputField.value = '';
-    phoneAPI(phoenInputText);
+    phoneAPI(phoenInputText, DataLimit);
     toggleSpinner(true);
 })
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -64,6 +66,15 @@ const phoneContainer = (Data) => {
 
     showNoPhoneText(Data);
 
+    const showButton = document.getElementById('show-all-btn');
+
+    if (Data.length > 10) {
+        showButton.classList.remove('d-none');
+    }
+    else {
+        showButton.classList.add('d-none');
+    }
+
     Data.forEach(Data => {
         const phoneSection = document.createElement('div');
         phoneSection.innerHTML = `
@@ -113,4 +124,3 @@ const phoneContainer = (Data) => {
     toggleSpinner(false);
 
 }
-
