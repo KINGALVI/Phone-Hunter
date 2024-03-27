@@ -66,15 +66,6 @@ const phoneContainer = (Data) => {
 
     showNoPhoneText(Data);
 
-    const showButton = document.getElementById('show-all-btn');
-
-    if (Data.length > 10) {
-        showButton.classList.remove('d-none');
-    }
-    else {
-        showButton.classList.add('d-none');
-    }
-
     Data.forEach(Data => {
         const phoneSection = document.createElement('div');
         phoneSection.innerHTML = `
