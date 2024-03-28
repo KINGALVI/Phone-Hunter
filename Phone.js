@@ -82,26 +82,7 @@ const phoneContainer = (Data) => {
                 <h4> Model : ${Data.phone_name} </h4>
                 <br>
     
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Buy Now </button>
-    
-    
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel"> Mobile Purchase Confirmation </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                               <b> You Are Successfuly Purchase ${Data.phone_name} !! ? </b>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-bs-dismiss="modal"> OK </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button type="button" class="btn btn-success" onclick="phoneDetailAPI('${Data.slug}')" data-bs-toggle="modal" data-bs-target="#exampleModal"> Detail Information </button>
 
             </div>
 
@@ -114,4 +95,125 @@ const phoneContainer = (Data) => {
 
     toggleSpinner(false);
 
+}
+
+
+const phoneDetailAPI = async id => {
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`
+    const res = await fetch(url)
+    const Data = await res.json()
+    phoneDetail(Data.data)
+}
+
+const phoneDetail = phoneDetail => {
+    console.log(phoneDetail)
+    const modalContainer = document.getElementById('modal-container')
+    modalContainer.innerHTML = `
+    <center>
+
+    <ol class="list-group">
+
+        <center>
+            <li class="list-group-item  ">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">ChipSet</div>
+                    ${phoneDetail.mainFeatures.chipSet}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Display Size</div>
+                    ${phoneDetail.mainFeatures.displaySize}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Memory</div>
+                    ${phoneDetail.mainFeatures.memory}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Storage</div>
+                    ${phoneDetail.mainFeatures.storage}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Bluetooth</div>
+                    ${phoneDetail.others.Bluetooth}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">GPS</div>
+                    ${phoneDetail.others.GPS}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">NFC</div>
+                    ${phoneDetail.others.NFC}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Radio</div>
+                    ${phoneDetail.others.Radio}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">USB</div>
+                    ${phoneDetail.others.USB}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">WLAN</div>
+                    ${phoneDetail.others.WLAN}
+                </div>
+            </li>
+        </center>
+
+        <center>
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">Release Date</div>
+                    ${phoneDetail.releaseDate}
+                </div>
+            </li>
+        </center>
+
+    </ol>
+    
+</center>
+    `
 }
