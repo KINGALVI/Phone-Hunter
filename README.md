@@ -32,4 +32,4 @@ Phone Hunter is a dynamic web application that allows users to search for mobile
 ## 🛠 Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/KINGALVI/Phone-Hunter
+   git clone https://github.com/KINGALVI/Phone-Hunter.git
