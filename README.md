@@ -29,10 +29,7 @@ Phone Hunter is a dynamic web application that allows users to search for mobile
 2. Click the **Search** button or press **Enter**.
 3. View the matching results and click **Detail Information** to explore specifications.
 
-## 🌐 Live Demo
-[🔗 Visit Phone Hunter on Netlify](https://frolicking-begonia-342508.netlify.app/) *(Replace with your actual URL)*
-
 ## 🛠 Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/KINGALVI/Phone-Hunter
